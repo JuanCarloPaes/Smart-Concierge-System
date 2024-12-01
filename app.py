@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from config import db
 from dotenv import load_dotenv
 from models.resident import Resident
+from project.log_entrada import registrar_entrada
 
 
 # load environment variables
@@ -21,6 +22,7 @@ def register_resident():
     cpf = request.json['cpf']
     name = request.json['name']
     apartment_number = request.json['apartment_number']
+    registrar_entrada("Novo morador:", name)  # Registro do log de novo morador
     new_resident = Resident(cpf=cpf, name=name, apartment_number=apartment_number)
     db.session.add(new_resident)
     db.session.commit()

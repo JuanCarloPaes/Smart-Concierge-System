@@ -1,4 +1,5 @@
 from settings import *
+from log_entrada import registrar_entrada
 
 # COR DA JANELA E TAMANHO
 Window.clearcolor = (0.9, 0.9, 0.9, 1)  # Cor mais suave para o fundo
@@ -90,7 +91,9 @@ class WelcomeScreen(Screen):
         cpf = self.cpf.text
         apartamento = self.apartamento.text
         print("Nome:", name, "\nCPF:", cpf, "\nApartamento:", apartamento)
+        registrar_entrada("Novo morador", name)  # Registro do log de novo morador
         print('Cadastro efetuado com sucesso')
+        
 
 # SEGUNDA TELA DO SCREEN
 class FunctionScreen(Screen):

@@ -1,5 +1,6 @@
 from settings import *
 from AcessoVisitante import AcessoVisitante
+from log_entrada import registrar_entrada
 from mqtt import *
 
 client = mqtt_connect()
@@ -82,6 +83,7 @@ class KivyCV(Image):
                 client.publish(MQTT_TOPIC_LIBERAR_MORADOR, "true")
                 mqtt_out(client, MQTT_TOPIC_LIBERAR_MORADOR)
                 print("Liberando morador")
+                registrar_entrada("Data e hora:") #log de entrada do morador
 
                 if self.unrecognized_timer:
                     Clock.unschedule(self.unrecognized_timer)  # Cancela o redirecionamento

@@ -1,6 +1,7 @@
 from settings import *
 # from recogface import client
 # from mqtt import *
+from log_entrada import registrar_entrada
 import requests
 
 class AcessoVisitante(Screen):
@@ -59,6 +60,7 @@ class AcessoVisitante(Screen):
         print(response)
 
         # mqtt_out(MQTT_TOPIC_LIBERAR_VISITANTE, client)
+        registrar_entrada("Visitante", name) # log entrada do visitante
         print("Nome:", name, "\nCPF:", cpf, "\nApartamento:", apartamento)
         print('Solicitação efetuada com sucesso')
 
